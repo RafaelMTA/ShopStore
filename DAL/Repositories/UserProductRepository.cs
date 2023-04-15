@@ -23,6 +23,8 @@ namespace DAL.Repositories
             return _context.UserProducts
                  .GroupBy(p => p.Product.Name)
                     .Select(g => new { Name = g.Key, Count = g.Count() })
+                    .OrderByDescending(g => g.Count)
+                    .Take(10)
                     .ToList();
         }
     }

@@ -11,18 +11,7 @@
     <div class="card-body">
         <h5 class="card-title" style="border-bottom: 1px solid black;">@Model.Name</h5>
         <div class="d-flex flex-column">
-            @if (Model.Price >= Model.Price)
-            {
-                <div class="d-flex flex-row justify-content-around">
-                    <p class="card-text text-decoration-line-through text-danger">@Html.DisplayFor(model => model!.Price, new { @class = "card-text text-decoration-line-through"})</p>
-                    @Html.DisplayFor(model => model!.Price)
-                </div>
-            }
-            else
-            {
-                @Html.DisplayFor(model => model!.Price)
-            }
-            <a asp-controller="Product" asp-action="AddItemToCart" asp-route-id="@Model.Id" class="btn btn-success">Add Item</a>
+           <a asp-controller="Product" asp-action="AddItemToCart" asp-route-id="@Model.Id" class="btn btn-success">Add Item</a>
         </div>
     </div>
 </div>

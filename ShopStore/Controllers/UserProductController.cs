@@ -44,12 +44,18 @@ namespace ShopStore.Controllers
         }
         public async Task<IActionResult> Details(Guid id)
         {
+            Expression<Func<UserProduct, object>>[] includes =
+   {
+                        o => o.Product,
+                        o => o.User
+                    };
+
             if (id == null || _service == null)
             {
                 return NotFound();
             }
 
-            var entity = await _service.GetById(id);
+            var entity = await _service.GetById(id, includes);
 
             if (entity == null)
             {
@@ -130,7 +136,7 @@ namespace ShopStore.Controllers
                     return RedirectToAction(nameof(Index));
                 }
 
-                ViewBag["ProductId"] = new SelectList(await _productService.GetAll(), "Id", "Name", entity.Id);               
+                ViewBag["ProductId"] = new SelectList(await _productService.GetAll(), "Id", "Name", entity.Id);
 
                 return View(entity);
             }
