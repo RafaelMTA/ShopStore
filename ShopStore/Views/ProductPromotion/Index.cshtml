@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ProductPromotion>
+
+@{
+    ViewData["Title"] = "Product Promotions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <table class="table table-bordered table-striped" id="datatable">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Product.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Promotion.Discount)</th>
+                <th>@Html.DisplayNameFor(model => model.Product.Price)</th>
+                <th>@Html.DisplayNameFor(model => model.Product.FinalPrice)</th>
+                <th>@Html.DisplayNameFor(model => model.Promotion.Start)</th>
+                <th>@Html.DisplayNameFor(model => model.Promotion.End)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Promotion.Discount)%
+                    </td>
+                      <td>
+                        @Html.DisplayFor(modelItem => item.Product.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FinalPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Promotion.Start)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Promotion.End)
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-between">
+                            @Html.ActionLink("Edit", "Edit", "ProductPromotion", new { id = item.Id }, new { @class = "btn btn-secondary" })
+                            @Html.ActionLink("Details", "Details", "ProductPromotion", new { id = item.Id }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Delete", "Delete", "ProductPromotion", new { id = item.Id }, new { @class = "btn btn-danger" })
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_DataTable");
+    }
+}

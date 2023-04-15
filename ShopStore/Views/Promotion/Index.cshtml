@@ -1,0 +1,57 @@
+﻿@using DAL.Models;
+
+@model IEnumerable<Promotion>
+
+@{
+    ViewData["Title"] = "Promotions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <table class="table table-bordered table-striped" id="datatable">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Discount)</th>
+                <th>@Html.DisplayNameFor(model => model.Start)</th>
+                <th>@Html.DisplayNameFor(model => model.End)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Discount)%
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Start)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.End)
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_DataTable");
+    }
+}

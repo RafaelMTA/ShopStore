@@ -1,0 +1,39 @@
+﻿<script type="text/javascript">
+    $(document).ready(async function () {
+        const search = $("#search");
+        const pagination = $("#itemAmount");
+
+        
+
+        $('#search').on('input', async () => {
+            GetRecords($("#search").val(), $("#itemAmount").val(), 1);
+        });
+
+        $('#itemAmount').change(async () => {
+            GetRecords($("#search").val(), $("#itemAmount").val(), 1);
+        });
+    });
+
+    const GetRecords = (search, recordsPerPage, pageNumber) => {
+        $("#partialViewContainer").empty();
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetRecordsPerPage")',
+            data: 
+            { 
+                search: search,
+                recordsPerPage: recordsPerPage,
+                pageNumber: pageNumber
+            },
+            success: function (result) {
+                $("#partialViewContainer").html(result);
+            },
+            error: function (xhr) {
+                console.log("Status: " + xhr.status);
+                console.log("Status Text: " + xhr.statusText);
+                alert('Failed to retrieve products');
+            }
+        });
+    }
+</script>

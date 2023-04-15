@@ -1,0 +1,22 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        $('#itemAmount').change(function () {
+            console.log($(this).val());
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetRecordsPerPage")',
+                dataType: 'json',
+                data: { recordsPerPage: $("#itemAmount").val(), pageNumber: 1 },
+
+                success: function () {
+                    console.log("Fetch data success");
+                },
+                error: function (ex) {
+                    console.log("Error: " + JSON.stringfy(ex));
+                    alert('Failed to retrieve products');
+                }
+            });
+            return false;
+        });    
+    });
+</script>

@@ -1,0 +1,161 @@
+﻿@using ShopStore.ViewModel;
+@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Shop Store";
+}
+
+<div class="d-flex flex-column">
+    <div id="title">
+        <h2>@ViewData["Title"]</h2><hr />
+    </div>
+    <div class="rounded"
+         id="header-container"
+         style="
+            background-image: url('https://m.wsj.net/video-atmo/20230310/2da21e79-e561-4be1-af30-9fae45a9663b/1/sequence013_1920x1080.jpg');
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;">
+        <div style="
+                width: 50%;
+                margin: 20px;
+                text-align: justify;
+                text-justify: inter-word;
+            ">
+            <div id="header-title">
+                <h3 class="text-white">Supermarket</h3>
+            </div>
+            <div id="header-body">
+                <span class="text-white">
+                    ShopStore provides you with the best selection of products for you and your family.
+                    Come and find the widest variety of products.
+                    We are proud to offer the best deals for the right price.
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="align-items-center">
+        <h3>Top Picks</h3>
+        <hr />
+        <div class="d-flex flex-row">
+            @foreach (var item in Model.Products)
+            {
+                await Html.RenderPartialAsync("_UserProductCard", item);
+            }
+        </div>
+    </div>
+    <div class="align-items-center">
+        <h3>Promotions</h3>
+        <hr />
+        <div class="d-flex flex-row overflow-scroll">
+           @foreach (var item in Model.ProductPromotions)
+            {
+                await Html.RenderPartialAsync("_ProductPromotionCard", item);
+            }
+        </div>
+    </div>
+    <hr />
+    <h3>Be part of our family</h3>
+    <hr />
+    <div class="d-flex flex-row justify-content-between">
+        <div id="item-container" class="card d-flex justify-content-around align-items-center" style="width: 30%;">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="https://st2.depositphotos.com/1186248/5903/i/950/depositphotos_59038649-stock-photo-loyal-customer.jpg"
+                     style="width: 5rem; height: 5rem;" />
+            </div>
+
+            <div id="item-title"><h4>Be our most loyal customer</h4><hr /></div>
+            <div id="item-content"><span>Participate in our fidelity program</span></div>
+        </div>
+        <div id="item-container" class="card d-flex justify-content-around align-items-center" style="width: 30%;">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="https://media.istockphoto.com/id/522389088/vector/vip-club-cards.jpg?s=612x612&w=0&k=20&c=Ms6bRFXe4iISeMBYdioSkEn-kMTW_M1cbCNg7JPSAcc="
+                     style="width: 5rem; height: 5rem;" />
+            </div>
+
+            <div id="item-title"><h4>Be part of our club</h4><hr /></div>
+            <div id="item-content"><span>Sign up for our club card to get even more discounts</span></div>
+        </div>
+        <div id="item-container" class="card d-flex justify-content-around align-items-center" style="width: 30%;">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="https://media.istockphoto.com/id/1342027534/vector/enter-to-win-ticket.jpg?s=612x612&w=0&k=20&c=cFIRMI6v-8R7U6tNderoGu-IuDszgHLoybrojgKpLr4="
+                     style="width: 5rem; height: 5rem;" />
+            </div>
+
+            <div id="item-title"><h4>Buy to win</h4><hr /></div>
+            <div id="item-content"><span>Participate in our raffle</span></div>
+        </div>
+    </div>
+    <br />
+    <div>
+        <h3>Discover More</h3>
+        <hr />
+            <div class="d-flex flex-row justify-content-between">
+                <a href="/Home/Contact" class="text-decoration-none border">
+                    <div class="d-flex flex-row justify-content-between align-items-center">
+                        <div class="bg-image hover-zoom">
+                            <img style="width: 5rem; height: 5rem; margin: 15px;"
+                                 src="https://cdn-icons-png.flaticon.com/128/1642/1642061.png"
+                                 class="card-img-top"
+                                 alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Have a enquiry?</h5>
+                            <p class="card-text">Get in contact with us and we`ll assist you.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/Home/Feedback" class="text-decoration-none border">
+                    <div class="d-flex flex-row justify-content-between align-items-center">
+                        <div class="bg-image hover-zoom">
+                            <img style="width: 5rem; height: 5rem; margin: 15px;"
+                                 src="https://cdn-icons-png.flaticon.com/128/813/813419.png"
+                                 class="card-img-top"
+                                 alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Have complaints?</h5>
+                            <p class="card-text">Tell us your feedback</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/Home/FAQ" class="text-decoration-none border">
+                    <div class="d-flex flex-row justify-content-between align-items-center">
+                        <div class="bg-image hover-zoom">
+                            <img style="width: 5rem; height: 5rem; margin: 15px;"
+                                 src="https://cdn-icons-png.flaticon.com/128/942/942802.png"
+                                 class="card-img-top"
+                                 alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Still have doubts?</h5>
+                            <p class="card-text">Check our FAQ and find your answers</p>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="d-flex flex-column justify-content-center align-items-center border">
+                    <div>
+                        <h5>Social media</h5>
+                    </div>
+                    <div class="card-body d-flex flex-row justify-content-around">
+                        <a href="#">
+                            <img style="width: 2rem; height: 2rem;"
+                                 src="https://cdn-icons-png.flaticon.com/128/2335/2335417.png" />
+                        </a>
+                        <a href="#">
+                            <img style="width: 2rem; height: 2rem;"
+                                 src="https://cdn-icons-png.flaticon.com/128/739/739237.png" />
+                        </a>
+                        <a href="#">
+                            <img style="width: 2rem; height: 2rem;"
+                                 src="https://cdn-icons-png.flaticon.com/128/725/725339.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

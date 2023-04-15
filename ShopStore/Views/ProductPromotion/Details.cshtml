@@ -1,0 +1,43 @@
+﻿@model ProductPromotion
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product Promotion</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Promotion.Discount)
+        </dt>        
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Promotion.Discount)
+        </dd>    
+          <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Promotion.Start)
+        </dt>        
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Promotion.Start)
+        </dd>    
+          <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Promotion.End)
+        </dt>        
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Promotion.End)
+        </dd>    
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
