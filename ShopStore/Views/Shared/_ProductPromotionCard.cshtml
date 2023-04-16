@@ -1,6 +1,6 @@
 ﻿@model DAL.Models.ProductPromotion
 
-<div class="card" style="width: 18rem;">
+<div class="card flex-shrink-0 m-1" style="width: 18rem;">
     <div class="bg-image hover-zoom">
         <img src="@Model.Product.ImageURL"
              class="card-img-top w-100"
@@ -14,8 +14,8 @@
             @if (Model.Product.Price >= Model.FinalPrice)
             {
                 <div class="d-flex flex-row justify-content-around">
-                    <p class="card-text text-decoration-line-through text-danger">@Html.DisplayFor(model => model!.Product.Price, new { @class = "card-text text-decoration-line-through"})</p>
-                    @Html.DisplayFor(model => model!.FinalPrice)
+                    <p class="card-text text-decoration-line-through text-danger">From: @Html.DisplayFor(model => model!.Product.Price, new { @class = "card-text text-decoration-line-through"})</p>
+                    To: @Html.DisplayFor(model => model!.FinalPrice)
                 </div>
             }
             else

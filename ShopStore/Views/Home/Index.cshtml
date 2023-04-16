@@ -36,9 +36,10 @@
         </div>
     </div>
     <div class="align-items-center">
+        <hr/>
         <h3>Top Picks</h3>
         <hr />
-        <div class="d-flex flex-row justify-content-around overflow-auto">
+        <div class="d-flex flex-row flex-wrap justify-content-start" style="overflow: auto;">
             @foreach (var item in Model.Products)
             {
                 await Html.RenderPartialAsync("_UserProductCard", item);
@@ -46,6 +47,7 @@
         </div>
     </div>
     <div class="align-items-center">
+        <hr />
         <h3>Promotions</h3>
         <hr />
         <div class="d-flex flex-row overflow-auto">
